@@ -1,10 +1,8 @@
-import useNav from "../model/useNav"
-import { 
-  PopupRoot, Subheader, Section, SectionTitle, DropdownButton, Button, Link, Text, 
-} from "./Basics"
-import React, { useLayoutEffect, useState } from "react"
-import { Popups } from "../model/usePopup"
-import usePopupScrollReset from "../hooks/usePopupScrollReset"
+import useNav from '../model/useNav'
+import {PopupRoot, Subheader, Section, SectionTitle, DropdownButton, Button, Link, Text} from './Basics'
+import React, {useLayoutEffect, useState} from 'react'
+import {Popups} from '../model/usePopup'
+import usePopupScrollReset from '../hooks/usePopupScrollReset'
 
 const Highlighted = ' border border-accentLite text-accentWhite text-shadow-duo '
 const Dim = ' text-accentWhite text-opacity-60 '
@@ -23,12 +21,12 @@ export default function How(p) {
   }
 
   usePopupScrollReset(ScrollerId, Popups.How)
-  
+
   return pug`
     PopupRoot(...p)
       Subheader.border-b.border-b-tpWhite.bg-accent.rounded-t-2xl
         | The Nuts & Bolts of #[br(class='sm:hidden')] #{page.title}
-      
+
       div.w-full.grow.flex.flex-col.overflow-y-scroll.bg-accentBlack.rounded-b-2xl(
         class='max-w-[777px] py-2 md:py-3'
         id=ScrollerId
@@ -77,21 +75,21 @@ export default function How(p) {
           each job in Jobs
             Item(...job expanded=expanded.jobs)
 
-        HowSection(className=${isBio? 'border-b' : ''})
+        HowSection(className=${isBio ? 'border-b' : ''})
           SectionHeader.-rotate-2(noButton expanded=false) Education
           Name.flex-center.text-center(class='w-[216px] xs:w-auto') BSE Computer Science, University of Michigan
 
         Link.px-5.my-6.self-center.shrink-0(
-          newTab href='https://github.com/samerce/bubbles-builds' 
+          newTab href='https://github.com/samerce/bubbles-builds'
           type='secondary'
-          className=${`text-xl md:text-2xl basis-[54px] pt-[3px] ${isBio? '' : 'hidden'}`}
+          className=${`text-xl md:text-2xl basis-[54px] pt-[3px] ${isBio ? '' : 'hidden'}`}
         ) See the code
   `
 }
 
-var SectionHeader = p => pug`
+var SectionHeader = (p) => pug`
   Button.w-full.justify-between.items-center.px-2.py-2.bg-transparent.rounded-4xl.mb-4.border-none(
-    onClick=p.onClick 
+    onClick=p.onClick
     aria-label=${`expand the ${p.children} section`}
     style={
       pointerEvents: p.noButton? 'none' : 'auto',
@@ -105,11 +103,11 @@ var SectionHeader = p => pug`
     )
 `
 
-var HowSection = p => pug`
+var HowSection = (p) => pug`
   Section.flex-center.pb-6.border-t.border-tpWhite(...p className='px-2 md:px-4 ' + p.className)
 `
 
-var Name = p => {
+var Name = (p) => {
   const {page} = useNav()
   const classes = p.className + (page.how?.includes(p.children) ? Highlighted : Dim)
 
@@ -121,17 +119,20 @@ var Name = p => {
   `
 }
 
-var ExperienceBar = p => {
+var ExperienceBar = (p) => {
   return (
     <div className='grow h-[18px] pr-4 overflow-hidden relative'>
-      <div className='h-full rounded-3xl bg-gradient-to-r from-accentBlack to-accent' style={{
-        width: `${p.experience}%`,
-      }} />
+      <div
+        className='h-full rounded-3xl bg-gradient-to-r from-accentBlack to-accent'
+        style={{
+          width: `${p.experience}%`,
+        }}
+      />
     </div>
   )
 }
 
-var Item = p => {
+var Item = (p) => {
   const [expanded, setExpanded] = useState(false)
 
   function toggle() {
@@ -142,9 +143,10 @@ var Item = p => {
     if (!p.expanded) setExpanded(false)
   }, [p.expanded])
 
-  if (p.expanded) return pug`
+  if (p.expanded)
+    return pug`
     section.flex-col.text-xl.font-body.rounded-2xl.leading-tight.w-full.relative
-      
+
       button.flex-center.text-left.w-full.overflow-hidden.relative.cursor-pointer.select-none(onClick=toggle)
         div(class='w-[166px] md:w-[181px]')
           Name #{p.name}
@@ -157,8 +159,9 @@ var Item = p => {
       Text(style={
         display: expanded? 'block' : 'none',
       }) #{p.description}
-  ` 
-  else return pug`
+  `
+  else
+    return pug`
     Name.flex-center #{p.name}
   `
 }
@@ -253,7 +256,7 @@ var Languages = [
     description: `
       In 2014, I spent a year building an advanced dress-builder web-app using Ruby on Rails.
     `,
-    },
+  },
   {
     key: 'PHP',
     name: 'PHP',
@@ -555,6 +558,15 @@ var Platforms = [
 
 var Jobs = [
   {
+    key: 'Cortico',
+    name: 'Cortico',
+    experience: 90,
+    time: '3 years',
+    description: `
+      A non-profit tech company bringing underheard voices and community insights to people in power to help them make better, more informed decisions.
+    `,
+  },
+  {
     key: 'Express Your Yes Foundation',
     name: 'Express Your Yes Foundation',
     experience: 100,
@@ -605,7 +617,7 @@ var Jobs = [
     experience: 25,
     time: '1 year',
     description: `
-      In search of software work with more meaning, I joined this health-tech startup in 2015. They had two main missions: to crowdsource honest reviews of medications and to help people find the right depression medication faster with an iOS app. I worked mostly on the latter in React Native. 
+      In search of software work with more meaning, I joined this health-tech startup in 2015. They had two main missions: to crowdsource honest reviews of medications and to help people find the right depression medication faster with an iOS app. I worked mostly on the latter in React Native.
     `,
   },
   {
@@ -614,7 +626,7 @@ var Jobs = [
     experience: 25,
     time: '1 year',
     description: `
-      My first gig after leaving Amazon. It was an advanced web-app built with AngularJS and Ruby on Rails. It helped brides build bespoke gowns. You previewed the gown in the editor as you chose materials, flourishes, and a silhouette, and then you worked one-on-one with our designers to refine the dress before creation. 
+      My first gig after leaving Amazon. It was an advanced web-app built with AngularJS and Ruby on Rails. It helped brides build bespoke gowns. You previewed the gown in the editor as you chose materials, flourishes, and a silhouette, and then you worked one-on-one with our designers to refine the dress before creation.
     `,
   },
 ]

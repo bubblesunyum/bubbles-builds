@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, PortfolioLink } from './Basics'
+import {Button, PortfolioLink} from './Basics'
 import Page from './Page'
-import usePopup, { Popups } from '../model/usePopup'
+import usePopup, {Popups} from '../model/usePopup'
 
 export default function Bio(p) {
   const {showPopup} = usePopup()
@@ -15,7 +15,7 @@ export default function Bio(p) {
         h1.rotate-6.leading-none.text-center.text-accentWhite.text-6xl.uppercase.font-head.text-shadow-6.drop-shadow-2xl(
           class='md:text-10xl'
         ) Bubbles #[br] Builds
-        
+
       div.flex-center.absolute.w-full.bottom-0.left-0(
         class='flex-col xs:flex-row pb-nav md:pb-navBig'
       )
@@ -29,14 +29,31 @@ export default function Bio(p) {
         PortfolioLink(
           class='!m-0 basis-auto'
           newTab
-          href='https://s3.us-east-2.amazonaws.com/purplerepublic.us/bubbles-portfolio/Samer-Chahine-Resume.pdf'
+          href='https://s3.us-east-2.amazonaws.com/purplerepublic.us/bubbles-portfolio/bubbles-samer-chahine-resume.pdf'
         ) See Resume
   `
 }
 
 var HowConfig = [
-  'Javascript', 'HTML / JSX / Pug', 'CSS', 'Pug', 'TailwindCSS', 'Webpack', 'Vercel',
-  'React', 'Redux', 'Node.js', 'Next.js', 'Git', 'VSCode', 'Iodine.com', 'Crendo Creations', 'Third & Loom', 'Amazon.com', 'BSE Computer Science, University of Michigan', 'Express Your Yes Foundation'
+  'Javascript',
+  'HTML / JSX / Pug',
+  'CSS',
+  'Pug',
+  'TailwindCSS',
+  'Webpack',
+  'Vercel',
+  'React',
+  'Redux',
+  'Node.js',
+  'Next.js',
+  'Git',
+  'VSCode',
+  'Iodine.com',
+  'Crendo Creations',
+  'Third & Loom',
+  'Amazon.com',
+  'BSE Computer Science, University of Michigan',
+  'Express Your Yes Foundation',
 ]
 
 var WhyConfig = {

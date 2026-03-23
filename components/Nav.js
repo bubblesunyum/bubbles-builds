@@ -1,11 +1,11 @@
-import { Button, Icon } from "./Basics"
-import How from "./How"
-import Why from "./Why"
-import { scrollTo } from "../utils/scroll"
-import { FaHeadphonesAlt } from 'react-icons/fa';
+import {Button, Icon} from './Basics'
+import How from './How'
+import Why from './Why'
+import {scrollTo} from '../utils/scroll'
+import {FaHeadphonesAlt} from 'react-icons/fa'
 
 import useNav from '../model/useNav'
-import usePopup, { Popups } from '../model/usePopup'
+import usePopup, {Popups} from '../model/usePopup'
 
 const BtnClasses = ' h-54 mx-1 md:mx-2 glass pointer-events-auto text-xl md:text-2xl transition '
 const CenterClasses = ' flex-center grow-0 shrink-0 basis-[54px] rounded-full '
@@ -22,7 +22,7 @@ export default function Nav(p) {
   return pug`
     nav.sticky.flex-center.bottom-0.left-0.px-2.h-nav.w-full.z-20.pointer-events-none(
       class='md:h-navBig origin-bottom scale-[.8] 2xs:scale-[.94] xs:scale-100'
-      style=${{position: popupId? 'fixed' : 'sticky'}}
+      style=${{position: 'sticky'}}
       aria-label='page nav'
     )
 
@@ -44,7 +44,7 @@ export default function Nav(p) {
         aria-label='site menu'
       )
       NavButton(
-        icon='music' popupId=Popups.Music 
+        icon='music' popupId=Popups.Music
         className=CenterClasses + 'md:basis-[54px]'
         aria-label='open the music player'
       )
@@ -59,17 +59,18 @@ export default function Nav(p) {
 
 var NavIcon = (p) => {
   const classes = 'inline drop-shadow-tpWhite w-[36px] h-[36px] md:w-[42px] md:h-[42px] ' + p.className
-  if (p.name === 'music') return <FaHeadphonesAlt className={'w-[26px] h-[26px] md:w-[30px] md:h-[30px] -mt-1 ' + classes} />
-  
+  if (p.name === 'music')
+    return <FaHeadphonesAlt className={'w-[26px] h-[26px] md:w-[30px] md:h-[30px] -mt-1 ' + classes} />
+
   return pug`
     Icon(...p className=classes)
   `
 }
 
-var NavButton = p => {
+var NavButton = (p) => {
   const {popupId: activePopupId, showPopup, hidePopup} = usePopup()
   const isPopupVisible = activePopupId === p.popupId
-  const iconName = isPopupVisible? 'view-close' : p.icon
+  const iconName = isPopupVisible ? 'view-close' : p.icon
   const classes = p.className + BtnClasses + (isPopupVisible && 'bg-accentWhite')
 
   function onClick() {
